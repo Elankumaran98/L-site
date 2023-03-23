@@ -38,7 +38,7 @@ const Home = () => {
       <nav>
         <p>Welcome Home</p>
         <div>
-          <button onClick={handleLogout}>Logout</button>
+          <button className='btn btn-outline-primary' onClick={handleLogout}>Logout</button>
         </div>
       </nav>
     </>

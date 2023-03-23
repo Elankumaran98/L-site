@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="bg-light ">
         <section>
           <Routes>
             <Route path="/home" element={<Home />} />
