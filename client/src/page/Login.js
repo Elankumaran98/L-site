@@ -12,7 +12,6 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Signed in
             const user = userCredential.user;
             navigate("/home")
             console.log(user);
