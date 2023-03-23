@@ -30,8 +30,7 @@ const Login = () => {
             <main >        
                 <section>
                     <div>                                            
-                        <p> LShop </p>                       
-                                                       
+                    <h1> LShop </h1>                                                     
                         <form>                                              
                             <div>
                                 <label htmlFor="email-address">
@@ -70,7 +69,7 @@ const Login = () => {
                             </div>                               
                         </form>
                        
-                        <p className="text-sm text-white text-center">
+                        <p>
                             No account yet? {' '}
                             <NavLink to="/signup">
                                 Sign up
