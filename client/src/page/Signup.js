@@ -28,7 +28,7 @@ const Signup = () => {
   };
 
   return (
-    <main className="container p-3 bg-secondary border border-danger rounded mt-2">
+    <main className="container p-3 border border-danger rounded mt-2">
       <section>
       <div>
             <h1 className="text-center"> LShop </h1>
