@@ -13,7 +13,7 @@ const Navbar = () => {
           height="30"
           className="d-inline-block align-top"
         />
-        Bootstrap
+        LShop
       </NavLink>
       <button
         className="navbar-toggler"

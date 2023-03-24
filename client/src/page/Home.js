@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import { signOut,onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -35,12 +36,10 @@ const Home = () => {
 
   return (
     <>
-      <nav>
-        <p>Welcome Home</p>
-        <div>
+      <Navbar/>
+      <div>
           <button className='btn btn-outline-primary' onClick={handleLogout}>Logout</button>
         </div>
-      </nav>
     </>
   );
 };
