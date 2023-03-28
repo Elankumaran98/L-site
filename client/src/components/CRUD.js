@@ -42,37 +42,50 @@ const CRUD = () => {
 
   return (
     <div>
-        <Navbar/>
-      <ul>
-        <CreateUser />
-        {users.map((user) => {
-          return (
-            <li key={user.id}>
-              Name :{user.name} {user.age}
-              <button
-                className="btn btn-xs btn-success ms-2"
-                onClick={() => {
-                  updateAge(user.id, user.age + 1);
-                }}
-              >
-                <i className="bi bi-plus-square"></i>
-              </button>
-              <button
-                className="btn btn-xs btn-danger ms-2"
-                onClick={() => updateAge(user.id, user.age - 1)}
-              >
-                <i className="bi bi-dash-square"></i>
-              </button>
-              <button
-                className="btn btn-xs btn-warning ms-2"
-                onClick={() => deleteUser(user.id)}
-              >
-                <i className="bi bi-trash3"></i>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <Navbar />
+      <CreateUser />
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => {
+            return (
+              <tr key={user.id}>
+                <th>{user.name}</th>
+                <td>{user.age}</td>
+                <td>
+                  <button
+                    className="btn btn-xs btn-success ms-2"
+                    onClick={() => {
+                      updateAge(user.id, user.age + 1);
+                    }}
+                  >
+                    <i className="bi bi-plus-square"></i>
+                  </button>
+
+                  <button
+                    className="btn btn-xs btn-danger ms-2"
+                    onClick={() => updateAge(user.id, user.age - 1)}
+                  >
+                    <i className="bi bi-dash-square"></i>
+                  </button>
+
+                  <button
+                    className="btn btn-xs btn-warning ms-2"
+                    onClick={() => deleteUser(user.id)}
+                  >
+                    <i className="bi bi-trash3"></i>
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
