@@ -10,6 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase.js";
 import CreateUser from "./CreateUser.js";
+import Navbar from "./Navbar.js";
 export const userCollectionRef = collection(db, "users");
 
 const CRUD = () => {
@@ -41,6 +42,7 @@ const CRUD = () => {
 
   return (
     <div>
+        <Navbar/>
       <ul>
         <CreateUser />
         {users.map((user) => {

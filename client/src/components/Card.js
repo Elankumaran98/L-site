@@ -1,19 +1,21 @@
 import React from "react";
+import Carousel from "better-react-carousel";
 import L from "../assets/l.jpg";
-import "../App.css"
-
+import L1 from "../assets/l1.jpg";
 
 const Card = () => {
   return (
-    <div className="card">
-      <img src={L} className="card-img-top "alt="Love" style={{width:"200px",height:"150px"}}/>
-      <div className="card-body">
-        <p className="card-text ">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
+    <Carousel cols={3} rows={1} gap={10} loop>
+      <Carousel.Item>
+        <img src={L} width="100%" alt="Love" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src={L1} width="100%" alt="Love" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src={L} width="100%" alt="Love" />
+      </Carousel.Item>
+    </Carousel>
   );
 };
 
