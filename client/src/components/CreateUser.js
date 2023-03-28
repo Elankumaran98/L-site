@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 const CreateUser = () => {
+    const [name,setName]=useState();
+    const [age,setAge]=useState();
   return (
     <div>CreateUser</div>
   )
