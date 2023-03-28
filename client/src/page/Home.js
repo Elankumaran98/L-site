@@ -3,6 +3,7 @@ import { signOut,onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Card from "../components/Card";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Home = () => {
   return (
     <>
       <Navbar/>
+      <Card/>
       <div>
           <button className='btn btn-outline-primary' onClick={handleLogout}>Logout</button>
         </div>
