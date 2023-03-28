@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase.js";
+import CreateUser from "./CreateUser.js";
 export const userCollectionRef = collection(db, "users");
 
 const CRUD = () => {
@@ -38,15 +39,40 @@ const CRUD = () => {
     await deleteDoc(userDoc);
   };
 
-  return <div>
-    <ul>
-        {users.map((user)=>{
-            return (
-                <li key={user.id}>Name :{user.name} {user.age}</li>
-            )
+  return (
+    <div>
+      <ul>
+        <CreateUser />
+        {users.map((user) => {
+          return (
+            <li key={user.id}>
+              Name :{user.name} {user.age}
+              <button
+                className="btn btn-xs btn-success ms-2"
+                onClick={() => {
+                  updateAge(user.id, user.age + 1);
+                }}
+              >
+                <i className="bi bi-plus-square"></i>
+              </button>
+              <button
+                className="btn btn-xs btn-danger ms-2"
+                onClick={() => updateAge(user.id, user.age - 1)}
+              >
+                <i className="bi bi-dash-square"></i>
+              </button>
+              <button
+                className="btn btn-xs btn-warning ms-2"
+                onClick={() => deleteUser(user.id)}
+              >
+                <i className="bi bi-trash3"></i>
+              </button>
+            </li>
+          );
         })}
-    </ul>
-  </div>;
+      </ul>
+    </div>
+  );
 };
 
 export default CRUD;
