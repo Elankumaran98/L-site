@@ -44,11 +44,12 @@ const CRUD = () => {
     <div>
       <Navbar />
       <CreateUser />
-      <table className="table">
+      <table className="table table-danger table-striped table-hover">
         <thead>
           <tr>
             <th>Name</th>
             <th>Age</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
