@@ -16,10 +16,33 @@ const AddEditUser = () => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
-  const [error, setError] = useState({});
+  const [errors, setErrors] = useState({});
 
-  const handleChange=()=>{
+  const handleChange=(e)=>{
+    setData({...data,[e.target.name]:e.target.value});
+  }
 
+  const validate=()=>{
+    let errors={}
+    if (!name) {
+      errors.name="Name is Required"
+    }
+    if (!email) {
+      errors.email="Email is Required"
+    }
+    if (!info) {
+      errors.info="Info is Required"
+    }
+    if (!contact) {
+      errors.contact="Contact is Required"
+    }
+    return errors
+  }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    let errors=validate();
+    if (Object.keys(errors).length) return setErrors(errors)
   }
 
   return (
@@ -37,14 +60,46 @@ const AddEditUser = () => {
             ) : (
               <>
                 <h2>Add User</h2>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Form.Input
                     label="Name"
+                    error={errors.name?{content:errors.name}:null}
                     placeHolder="Enter Name"
                     name="name"
                     onChange={handleChange}
                     value={name}
+                    autoFocus
                   />
+                  <Form.Input
+                    label="Email"
+                    error={errors.email?{content:errors.email}:null}
+                    placeHolder="Enter Email"
+                    name="email"
+                    onChange={handleChange}
+                    value={email}
+                  />
+                  <Form.TextArea
+                    label="Info"
+                    error={errors.info?{content:errors.info}:null}
+                    placeHolder="Enter Info"
+                    name="info"
+                    onChange={handleChange}
+                    value={info}
+                  />
+                  <Form.Input
+                    label="Contact"
+                    error={errors.contact?{content:errors.contact}:null}
+                    placeHolder="Enter Contact No"
+                    name="contact"
+                    onChange={handleChange}
+                    value={contact}
+                  />
+                  <Form.Input
+                  label="upload"
+                  type="file"
+                  onChange={(e)=>setFile(e.target.files[0])}
+                  />
+                  <Button primary type="submit">Submit</Button>
                 </Form>
               </>
             )}
