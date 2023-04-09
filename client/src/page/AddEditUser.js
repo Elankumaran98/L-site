@@ -3,6 +3,7 @@ import { Button, Form, Grid, Loader } from "semantic-ui-react";
 import { storage, db } from "../firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { addDoc, serverTimestamp,collection } from "firebase/firestore";
 
 const initialState = {
   name: "",
@@ -18,6 +19,7 @@ const AddEditUser = () => {
   const [progress, setProgress] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
   const [errors, setErrors] = useState({});
+  const navigate=useNavigate()
 
   useEffect(() => {
     const uploadFile=()=>{
@@ -72,10 +74,15 @@ const AddEditUser = () => {
     return errors
   }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault();
     let errors=validate();
     if (Object.keys(errors).length) return setErrors(errors)
+    setIsSubmit(true)
+    await addDoc(collection(db,"myusers"),{
+      ...data
+    })
+    navigate("/")
   }
 
   return (
