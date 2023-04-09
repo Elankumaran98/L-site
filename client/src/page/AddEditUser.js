@@ -36,7 +36,7 @@ const AddEditUser = () => {
             break;
             case "running":
               console.log("Uploading")
-            break
+            break;
           default:
             break;
         }
