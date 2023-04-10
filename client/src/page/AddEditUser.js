@@ -3,7 +3,14 @@ import { Button, Form, Grid, Loader } from "semantic-ui-react";
 import { storage, db } from "../firebase";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import {
+  addDoc,
+  updateDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const initialState = {
   name: "",
@@ -32,7 +39,7 @@ const AddEditUser = () => {
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       setData({ ...snapshot.data() });
-      console.log(...snapshot.data())
+      console.log(...snapshot.data());
     }
   };
 
@@ -99,9 +106,27 @@ const AddEditUser = () => {
     let errors = validate();
     if (Object.keys(errors).length) return setErrors(errors);
     setIsSubmit(true);
-    await addDoc(collection(db, "myusers"), {
-      ...data,
-    });
+    if (!id) {
+      try {
+        await addDoc(collection(db, "myusers"), {
+          ...data,
+          timestamp: serverTimestamp(),
+        });
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    else{
+      try {
+        await updateDoc(doc(db, "myusers",id), {
+          ...data,
+          timestamp: serverTimestamp(),
+        });
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
     navigate("/");
   };
 
@@ -119,8 +144,8 @@ const AddEditUser = () => {
               <Loader active inline="centered" />
             ) : (
               <>
-                <h2>Add User</h2>
-                <Form onSubmit={handleSubmit} >
+                <h2>{id ? "Update User" : "Add User"}</h2>
+                <Form onSubmit={handleSubmit}>
                   <Form.Input
                     label="Name"
                     error={errors.name ? { content: errors.name } : null}
