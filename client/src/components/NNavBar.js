@@ -13,16 +13,20 @@ const NNavBar = () => {
       attached
     >
       <Container>
-        <Menu.Item className="home">
+        <Menu.Item name="home">
           <Link to="/">
-            <Image size="mini" src={logo} alt="logo"/>
+            <Image size="mini" src={logo} alt="logo" />
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <h2>Laxi</h2>
+          <Link to="/">
+            <h2>Laxi</h2>
+          </Link>
         </Menu.Item>
         <Menu.Item position="right">
-          <Button size="mini" primary onClick={()=>navigate("add")}>Add User</Button>
+          <Button size="mini" primary onClick={() => navigate("add")}>
+            Add User
+          </Button>
         </Menu.Item>
       </Container>
     </Menu>

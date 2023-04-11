@@ -112,18 +112,17 @@ const AddEditUser = () => {
           ...data,
           timestamp: serverTimestamp(),
         });
-      } catch(error) {
-        console.log(error)
+      } catch (error) {
+        console.log(error);
       }
-    }
-    else{
+    } else {
       try {
-        await updateDoc(doc(db, "myusers",id), {
+        await updateDoc(doc(db, "myusers", id), {
           ...data,
           timestamp: serverTimestamp(),
         });
-      } catch(error) {
-        console.log(error)
+      } catch (error) {
+        console.log(error);
       }
     }
 

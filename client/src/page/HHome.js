@@ -82,7 +82,7 @@ const HHome = () => {
                   <div>
                     <Button
                       color="green"
-                      onClick={() => navigate(`/update/:${item.id}`)}
+                      onClick={() => navigate(`/update/${item.id}`)}
                     >
                       Update
                     </Button>
