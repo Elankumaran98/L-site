@@ -39,13 +39,11 @@ const AddEditUser = () => {
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       setData({ ...snapshot.data() });
-      console.log(...snapshot.data());
     }
   };
 
   useEffect(() => {
     const uploadFile = () => {
-      const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, file.name);
       const uploadTask = uploadBytesResumable(storageRef, file);
 

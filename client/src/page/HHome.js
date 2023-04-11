@@ -70,7 +70,7 @@ const HHome = () => {
                     style={{
                       height: "150px",
                       width: "150px",
-                      borderRadius: "50%",
+                      borderRadius: "40%",
                     }}
                   />
                   <Card.Header style={{ marginTop: "10px" }}>
