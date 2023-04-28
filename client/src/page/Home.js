@@ -32,13 +32,17 @@ const Home = () => {
         console.log(error);
       });
   };
+   const logout=()=>{
+    localStorage.clear()
+    window.location.reload()
+   }
 
   return (
     <>
       <Navbar />
       <Card />
       <div>
-        <button className="btn btn-outline-primary" onClick={handleLogout}>
+        <button className="btn btn-outline-primary"  onClick={logout}>
           Logout
         </button>
       </div>
