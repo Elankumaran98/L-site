@@ -79,7 +79,7 @@ const HHome = () => {
                   <Card.Description>{item.info}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <div>
+                  
                     <Button
                       color="green"
                       onClick={() => navigate(`/update/${item.id}`)}
@@ -97,7 +97,7 @@ const HHome = () => {
                         {...user}
                       />
                     )}
-                  </div>
+                  
                 </Card.Content>
               </Card>
             </Grid.Column>

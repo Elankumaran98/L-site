@@ -8,6 +8,7 @@ import CRUD from "./components/CRUD";
 import HHome from "./page/HHome";
 import AddEditUser from "./page/AddEditUser";
 import NNavBar from "./components/NNavBar";
+import FbLogin from "./facebook/FbLogin";
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/crud" element={<CRUD/>}/>
-          <Route path="" element={<HHome/>}/>
+          <Route path="1" element={<HHome/>}/>
           <Route path="/add" element={<AddEditUser/>}/>
           <Route path="/update/:id" element={<AddEditUser/>}/>
+          <Route path="" element={<FbLogin/>} />
         </Routes>
       </div>
     </Router>
